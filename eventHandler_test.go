@@ -28,7 +28,7 @@ func Test_PublishCallbackSimple(t *testing.T) {
 		t.Error("Expecting an error, because no subscriber has been registered.")
 	}
 	for i := 0; i < 1000; i++ {
-		h.RegisterCallback("example", func(e Event) {
+		h.Subscribe("example", func(e Event) {
 			spew.Dump(e)
 			if got, expected := e.(*exampleEvent).sentence, "el perro de san roque no tiene rabo"; got != expected {
 				t.Errorf("Bad event sentence. Got <%s>, expecting <%s>", got, expected)
